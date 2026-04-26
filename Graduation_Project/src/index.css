@@ -1,0 +1,85 @@
+:root {
+  --pageBgColor: #f9fafb;
+  --cardBgColor: #f9fafb;
+  --nav-bg-start: rgba(255, 255, 255, 0.7);
+  --nav-bg-end: rgba(255, 255, 255, 0.4);
+  --nav-border: rgba(0, 0, 0, 0.08);
+  --nav-shadow: rgba(0, 0, 0, 0.08);
+  --nav-blur: 32px;
+  --nav-button: #F4F5F7;
+  --nav-text-active: #1E2330;
+  --nav-text: #4B5563;
+  --pColor: #606776;
+  --btnBorderColor: #DADDE4;
+  --btnTextColor: #4B5261;
+  --cardShadow: rgba(100, 100, 111, 0.2);
+  --dropdownBg: #ffffff;
+  --textPrimary: #111827;
+  --textSecondary: #6b7280;
+  --borderColor: #e5e7eb;
+  --imgBg: #f3f4f6;
+  --btnBg: #f3f4f6;
+  --subtotalBg: #f3f4f6;
+  --viewBtnBg: #e5e7eb;
+}
+
+[data-bs-theme="dark"] {
+  --pageBgColor: #101828;
+  --cardBgColor: #1e2939;
+  --nav-bg-start: rgba(20, 30, 60, 0.6);
+  --nav-bg-end: rgba(20, 30, 60, 0.3);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --nav-shadow: rgba(0, 0, 0, 0.2);
+  --nav-blur: 32px;
+  --nav-button: #1e2939; 
+  --nav-text-active: #FFFFFF;
+  --nav-text: #E5E7EB;
+  --pColor: #B4B8C6;
+  --btnBorderColor: #606776;
+  --btnTextColor: #DADDE4;
+  --cardShadow: rgba(0, 0, 0, 0.4);
+  --dropdownBg: #151c2e;
+  --textPrimary: #ffffff;
+  --textSecondary: #8892a4;
+  --borderColor: #1e2a3a;
+  --imgBg: #1e2a3a;
+  --btnBg: #1e2a3a;
+  --subtotalBg: #1e2a3a;
+  --viewBtnBg: #2a3a4a;
+}
+
+body {
+  background-color: var(--pageBgColor);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.navbar {
+  background: linear-gradient(90deg, var(--nav-bg-start), var(--nav-bg-end)) !important;
+  backdrop-filter: blur(var(--nav-blur));
+  border-bottom: 1px solid var(--nav-border);
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
