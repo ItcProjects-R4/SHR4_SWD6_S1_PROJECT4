@@ -21,6 +21,21 @@
   --btnBg: #f3f4f6;
   --subtotalBg: #f3f4f6;
   --viewBtnBg: #e5e7eb;
+  --priceTagBgColor: #ffffff;
+  --priceTagBorderColor: #e5e7eb;
+  --tableHeadBgColor: #f9fafb;
+  --adminBadgeBgColor: #f3e8ff;
+  --adminBadgeTextColor: #6e11b0;
+  --userBadgeBgColor: #dbfce7;
+  --userBadgeTextColor: #016630;
+  --ownerBadgeBgColor: #fef3c7;
+  --ownerBadgeTextColor: #92400e;
+  --card-bg: #ffffff;
+  --card-border: #d9dee7;
+  --input-bg: #f8fafc;
+  --input-border: #d9dee7;
+  --text-main: #0f172a;
+  --text-secondary: #64748b;
 }
 
 [data-bs-theme="dark"] {
@@ -46,14 +61,29 @@
   --btnBg: #1e2a3a;
   --subtotalBg: #1e2a3a;
   --viewBtnBg: #2a3a4a;
+  --priceTagBgColor: #101828;
+  --priceTagBorderColor: rgba(255, 255, 255, 0.12);
+  --tableHeadBgColor: #364153;
+  --adminBadgeBgColor: #59168b;
+  --adminBadgeTextColor: #e9d4ff;
+  --userBadgeBgColor: #0d542b;
+  --userBadgeTextColor: #b9f8cf;
+  --ownerBadgeBgColor: #78350f;
+  --ownerBadgeTextColor: #fde68a;
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --input-bg: #334155;
+  --input-border: #475569;
+  --text-main: #ffffff;
+  --text-secondary: #94a3b8;
 }
 
 body {
   background-color: var(--pageBgColor);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

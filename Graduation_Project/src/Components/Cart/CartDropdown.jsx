@@ -10,11 +10,15 @@ export default function CartDropdown({ onClose }) {
   let items = useSelector(state => state.cart.items);
   let totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   let { user } = useContext(UserContext);
+  let cartUserId = user?.isAnonymous ? "guest" : user?.uid;
   let isLoggedIn = user && !user.isAnonymous;
 
   function handleQuantity(id, quantity) {
-    if (quantity < 1) return;
-    dispatch(updateQuantity({ id, quantity }));
+    if (quantity < 1) {
+      dispatch(removeFromCart({id, userId:cartUserId}));
+      return;
+    }
+    dispatch(updateQuantity({ id, quantity, userId:cartUserId }));
   }
 
   return (
@@ -29,7 +33,7 @@ export default function CartDropdown({ onClose }) {
         <>
           {items.slice(0, 3).map(item => (
             <div key={item.id} className={Style.cartItemRow}>
-              <img src={item.image} alt={item.title} className={Style.cartItemImg} />
+              <img src={item.thumbnail} alt={item.title} className={Style.cartItemImg} />
               <div style={{ flex: 1 }}>
                 <p className={Style.cartProductTitle}>{item.title}</p>
                 <p className={Style.cartProductPrice}>${item.price}</p>
@@ -41,7 +45,7 @@ export default function CartDropdown({ onClose }) {
                   <button onClick={() => handleQuantity(item.id, item.quantity + 1)} className={Style.cartQtyBtn}>
                     <i className="fa-solid fa-plus"></i>
                   </button>
-                  <button onClick={() => dispatch(removeFromCart(item.id))} className={Style.cartRemoveBtn}>
+                  <button onClick={() => dispatch(removeFromCart({id:item.id, userId:cartUserId}))} className={`${Style.cartRemoveBtn} bg-transparent`}>
                     <i className="fa-solid fa-trash"></i>
                   </button>
                 </div>

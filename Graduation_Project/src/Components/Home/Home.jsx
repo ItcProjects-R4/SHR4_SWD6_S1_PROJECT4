@@ -8,14 +8,27 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Store/cartSlice";
+import { UserContext } from "../../Context/UserContext";
 
 export default function Home() {
     let { products, categories, counts, loading } = useContext(DataContext);
     let sectionRef = useRef(null);
     let navigate = useNavigate();
+    let { user } = useContext(UserContext);
     let [start] = useState(() => Math.floor(Math.random() * (products.length > 12 ? products.length - 12 : 0)));
     let featuredCategorySlugs = categories.map(category => category.slug);
-    let featuredProducts = products.filter(product => featuredCategorySlugs.includes(product.category)).sort(() => Math.random() - 0.5).slice(0, 8);
+    const [featuredProducts, setFeaturedProducts] = useState([]);
+
+    useEffect(() => {
+        if (products.length > 0) {
+            const shuffled = [...products]
+                .filter(product => featuredCategorySlugs.includes(product.category))
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 8);
+
+            setFeaturedProducts(shuffled);
+        }
+    }, [products]);
     let dispatch = useDispatch();
     let [toast, setToast] = useState(null);
 
@@ -57,7 +70,7 @@ export default function Home() {
             <div className="row justify-content-center gy-4">
                 {featuredProducts.map((product) => (
                     <div key={product.id} className="col-12 col-md-6 col-lg-3">
-                        <div className={Style.productCard} onClick={() => navigate(`/${product.category.slug}/${product.slug}-${product.id}`)}>
+                        <div className={Style.productCard} onClick={() => navigate(`/${product.category}/${product.slug}-${product.id}`)}>
                             <div className={Style.productImg}>
                                 <img src={product.images[0]} alt={product.title} />
                                 <span className={Style.price}>${product.price}</span>
@@ -65,13 +78,16 @@ export default function Home() {
                                 <button className={Style.addBtn} onClick={(e) => {
                                     e.stopPropagation();
                                     dispatch(addToCart({
-                                    id: product.id,
-                                    title: product.title,
-                                    price: product.price,
-                                    image: product.images[0],
-                                 }));
-                                 setToast(product.title);
-                                 setTimeout(() => setToast(null), 3000);
+                                        userId: user.isAnonymous ? "guest" : user.uid,
+                                        product: {
+                                            id: product.id,
+                                            title: product.title,
+                                            price: product.price,
+                                            thumbnail: product.images[0],
+                                        }
+                                    }));
+                                    setToast(product.title);
+                                    setTimeout(() => setToast(null), 3000);
                                 }}>
                                     <i className="fa-solid fa-cart-shopping"></i> Add to Cart
                                 </button>
@@ -85,10 +101,10 @@ export default function Home() {
             </div>
         </div>
         {toast && (
-          <div style={{ position: "fixed", top: "20px", right: "20px", background: "#1e2a3a", color: "#ffffff", padding: "14px 20px", borderRadius: "12px", display: "flex", alignItems: "center", gap: "10px", zIndex: 9999, boxShadow: "0 4px 20px rgba(0,0,0,0.3)", fontSize: "14px", fontWeight: "500", animation: "slideDown 0.3s ease" }}>
-           <i className="fa-solid fa-circle-check" style={{ color: "#2ecc71" }}></i>
-           {toast} added to cart!
-         </div>
-    )}
+            <div style={{ position: "fixed", bottom: "20px", left: "20px", background: "var(--pageBgColor)", color: "var(--textColor)", padding: "14px 20px", borderRadius: "12px", display: "flex", alignItems: "center", gap: "10px", zIndex: 9999, boxShadow: "0 4px 20px rgba(0,0,0,0.3)", fontSize: "14px", fontWeight: "500", animation: "slideDown 0.3s ease" }}>
+                <i className="fa-solid fa-circle-check" style={{ color: "#2ecc71" }}></i>
+                {toast} added to cart!
+            </div>
+        )}
     </>
 }

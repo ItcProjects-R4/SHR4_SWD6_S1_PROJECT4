@@ -1,1 +1,50 @@
-.AdminDashboard {}
+.adminDashboard {
+    padding: 50px 0;
+    min-height: 100vh;
+}
+
+.header h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #6b7280;
+    margin-bottom: 35px;
+}
+
+.tabs {
+    display: flex;
+    gap: 18px;
+    border-bottom: 1px solid var(--btnBorderColor);
+    margin-bottom: 30px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 4px;
+}
+
+.tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.tabBtn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    padding: 14px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #6b7280;
+    border-bottom: 3px solid transparent;
+    transition: 0.2s;
+}
+
+.active {
+    color: #2563eb;
+    border-color: #2563eb;
+}
