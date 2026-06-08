@@ -14,15 +14,30 @@
     gap: 5px;
 }
 
+.fullWidth{
+    grid-column: 1 / -1;
+}
+
 .cancelTopBtn span, .addBtn span{
     font-size: 0.8rem;
 }
 
-.addBtn:hover, .submitBtn:hover, .cancelTopBtn:hover {
+.addBtn:hover, .submitBtn:hover, .cancelTopBtn:hover, .saveBtn:hover {
     transform: scale(1.01) translateY(-2px);
     box-shadow:
         0 12px 30px rgba(91,95,255,.3),
         0 6px 15px rgba(56,189,248,.2);
+}
+
+.modalFooter .saveBtn{
+    background: linear-gradient(135deg, #4f6ef7, #6c63ff, #3ed6c5);
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
 }
 
 
@@ -54,6 +69,10 @@
     font-size: 30px;
     font-weight: 700;
     color: var(--textColor);
+}
+
+.modalHeader h3{
+    margin: 0;
 }
 
 .formGrid,
@@ -154,7 +173,7 @@
 }
 
 .confirmDelete{
-    background: #ef4444;
+    background: #ef4444 !important;
     color: white;
     border: none;
     padding: 10px 18px;
@@ -176,6 +195,11 @@
 .modal {
     width: 820px;
     max-width: 92%;
+    max-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+
     overflow: hidden;
 }
 
@@ -183,6 +207,12 @@
 .modalFooter {
     padding: 24px 30px;
     border-bottom: 1px solid var(--btnBorderColor);
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .modalFooter {
@@ -195,6 +225,8 @@
 
 .modalBody {
     padding: 30px;
+    max-height: calc(85vh - 140px);
+    overflow-y: auto;
 }
 
 .closeBtn {
@@ -203,6 +235,49 @@
     font-size: 28px;
     color: var(--pColor);
     cursor: pointer;
+}
+
+.imageRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.imageRow input {
+    flex: 1;
+}
+
+.imagesSection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.removeImageBtn {
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+
+    background: none;
+    border: none;
+    color: #ef4444;
+
+    cursor: pointer;
+    transition: .25s;
+}
+
+.removeImageBtn:hover {
+    opacity: .9;
+}
+
+.addImageBtn {
+    width: fit-content !important;
 }
 
 @media (max-width: 768px) {

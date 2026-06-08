@@ -1,70 +1,209 @@
-# Getting Started with Create React App
+# Marketly
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Modern e-commerce web application built with React, Firebase, Redux Toolkit, and Firestore.
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+https://marketly-nu.vercel.app
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Authentication & Users
 
-### `npm test`
+* Firebase Authentication
+* Guest browsing support
+* Persistent user sessions
+* User roles (User, Admin, Owner)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Shopping Experience
 
-### `npm run build`
+* Product catalog
+* Categories browsing
+* Product details pages
+* Search and filtering
+* Shopping cart
+* Real checkout flow
+* Order tracking
+* Order history
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Admin Dashboard
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* User Management
+* Product Management
+* Order Management
+* Real-time Firestore updates
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Owner Features
 
-### `npm run eject`
+* Backup & Restore system
+* Products seeding from Platzi API
+* System settings management
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Additional Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Dark / Light mode
+* Responsive design
+* SEO optimization with React Helmet Async
+* Toast notifications
+* Real-time Firestore synchronization
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## System Architecture
 
-## Learn More
+Marketly uses Firebase Authentication and Firestore as the primary backend services.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Although products can be imported from the Platzi API, the application does not rely on Platzi data during normal operation.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Products are imported once and stored in Firestore, allowing the application to:
 
-### Code Splitting
+* Maintain stable product data
+* Avoid external API inconsistencies
+* Support real product management operations
+* Keep all modifications synchronized across the platform
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Orders are stored entirely in Firestore, which means:
 
-### Analyzing the Bundle Size
+* Orders are available across devices
+* Orders persist after logout
+* Order tracking uses real database data
+* Admins can manage order statuses in real time
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Only cart items are temporarily stored in localStorage and are automatically cleared after a successful checkout.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Admin Dashboard
 
-### Advanced Configuration
+### Users Management
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* View registered users
+* Remove users from Firestore records
+
+**Note:** Removing a user only deletes the Firestore document. If the same user signs in again, a new record will be automatically created.
+
+### Products Management
+
+* Create products
+* Edit products
+* Delete products
+* Manage multiple product images
+
+All changes are applied directly to Firestore and immediately affect the live website.
+
+### Orders Management
+
+* View all orders
+* Inspect order details
+* Update order status
+* Track customer purchases
+
+---
+
+## Owner Features
+
+### Backup & Restore
+
+Create backups of products and categories collections and restore them when needed.
+
+### Products Seeding
+
+Import products from Platzi API directly into Firestore collections.
+
+### Settings
+
+Manage system-level operations and data synchronization.
+
+---
+
+## Demo Admin Account
+
+Email: [admin@marketly.com](mailto:admin@marketly.com)
+
+Password: 123456789
+
+The Owner account remains private to prevent accidental database modifications.
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* React
+* React Router DOM
+* Redux Toolkit
+* CSS Modules
+* Bootstrap
+* React Helmet Async
+* React Hot Toast
+* Formik
+* Yup
+
+### Backend Services
+
+* Firebase Authentication
+* Cloud Firestore
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* Vercel
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/sohaib-ayman/marketly.git
+```
+
+### Navigate to Project Directory
+
+```bash
+cd marketly
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run Development Server
+
+```bash
+npm start
+```
+
+---
+
+## Project Structure
+
+```text
+src/
+├── Components/
+├── Context/
+├── Store/
+├── firebase.js
+├── App.js
+```
+
+---
+
+## Team Members
+
+* Sohaib Ayman Elsayed Elbadawy Ashry
+* Hossam Hassan Mostafa Hassan
+* Mohamed Ahmed Thabet Hussein
+* Rawan Hamdi Mohamed Saad
+* Abdelrahman Khaled Slahelden Mohamed
+
+---
+
+## Initiative
+
+This project was developed as part of the Digital Egypt Pioneers Initiative (DEPI).
