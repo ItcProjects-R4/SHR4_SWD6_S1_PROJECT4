@@ -4,7 +4,7 @@ Modern e-commerce web application built with React, Firebase, Redux Toolkit, and
 
 ## Live Demo
 
-https://marketly-store.vercel.app/
+https://marketly-nu.vercel.app
 
 ---
 
