@@ -4,7 +4,7 @@ Modern e-commerce web application built with React, Firebase, Redux Toolkit, and
 
 ## Live Demo
 
-https://marketly-nu.vercel.app
+https://marketly-store.vercel.app/
 
 ---
 
@@ -171,14 +171,16 @@ Manage system-level operations and data synchronization.
 
 ### Clone Repository
 
+## Clone Repository
+
 ```bash
-git clone https://github.com/sohaib-ayman/marketly.git
+git clone https://github.com/ItcProjects-R4/SHR4_SWD6_S1_PROJECT4.git
 ```
 
 ### Navigate to Project Directory
 
 ```bash
-cd marketly
+cd SHR4_SWD6_S1_PROJECT4/Graduation_Project
 ```
 
 ### Install Dependencies
